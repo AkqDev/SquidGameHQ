@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #0c0c0c;
+    color: white;
+    overflow-x: hidden;
+}
+
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./Images/squid\ game\ bg-wallpaper.jpg') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.glow-effect {
+    text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
+}
+
+.participant-card {
+    transition: all 0.3s ease;
+    background: #1a1a1a;
+}
+
+.participant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+}
+
+.participant-card img{
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    aspect-ratio: 0.9;
+}
+
+.game-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255, 0, 0, 0.1));
+    z-index: -1;
+}
+
+.circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #fff;
+    display: inline-block;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
