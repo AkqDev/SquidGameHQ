@@ -3,7 +3,6 @@
 --------------------------------*/
 const MOBILE_MENU_ID = 'mobileSidebar';
 const MOBILE_BTN_ID = 'mobileMenuBtn';
-// const CLOSE_BTN_ID = 'closeSidebarBtn'; // Removed: Icon is now handled by mobileMenuBtn
 const OVERLAY_ID = 'sidebarOverlay';
 const SIGNUP_MODAL_ID = 'signupModal';
 const CLOSE_MODAL_ID = 'closeModal';
@@ -16,7 +15,6 @@ let prizeCounterExecuted = false;
 // DOM elements
 const mobileSidebar = document.getElementById(MOBILE_MENU_ID);
 const mobileMenuBtn = document.getElementById(MOBILE_BTN_ID);
-// const closeSidebarBtn = document.getElementById(CLOSE_BTN_ID); // Removed
 const sidebarOverlay = document.getElementById(OVERLAY_ID);
 const signupModal = document.getElementById(SIGNUP_MODAL_ID);
 const closeModalBtn = document.getElementById(CLOSE_MODAL_ID);
@@ -29,6 +27,104 @@ const prizeMoneyElement = document.getElementById(PRIZE_MONEY_ELEMENT_ID);
 // NEW: Icon elements for the toggle functionality
 const hamburgerIcon = document.getElementById('hamburgerIcon');
 const closeIcon = document.getElementById('closeIcon');
+
+
+/* -------------------------------
+    DYNAMIC CONTENT DATA
+--------------------------------*/
+
+const GAMES_DATA = [
+    { title: "RED LIGHT, GREEN LIGHT", iconShape: "circle", iconColor: "pink-500", description: "Run when you hear \"green light\" but freeze when you hear \"red light\"." },
+    { title: "HONEYCOMB", iconShape: "square", iconColor: "blue-500", description: "Choose your shape carefully and try not to break the honeycomb." },
+    { title: "TUG OF WAR", iconShape: "triangle", iconColor: "green-500", description: "Team up and pull with all your might against your opponents." },
+    { title: "MARBLES", iconShape: "square", iconColor: "purple-500", description: "Win all your opponent's marbles to survive this psychological game." },
+    { title: "GLASS BRIDGE", iconShape: "circle", iconColor: "yellow-500", description: "Choose between tempered and normal glass while crossing." },
+    { title: "SQUID GAME", iconShape: "triangle", iconColor: "red-500", description: "The final game that gives the competition its name." }
+];
+
+const PARTICIPANT_DATA = [
+    { num: 456, name: "Player 456", status: "Default Status", location: "Seoul", state: "Active", image: "./Images/player 456.webp" },
+    { num: 67, name: "Player 067", status: "Pickpocket", location: "Busan", state: "Active", image: "./Images/player 067.jpg" },
+    { num: 1, name: "Player 001", status: "Veteran", location: "Daegu", state: "Eliminated", image: "./Images/player 001.webp" },
+    { num: 101, name: "Player 101", status: "Gangster", location: "Incheon", state: "Eliminated", image: "./Images/player 101.png" }
+];
+
+const RULES_DATA = [
+    { title: "Rule 1", iconShape: "circle", description: "Participants must remain in the competition area until all games are completed." },
+    { title: "Rule 2", iconShape: "triangle", description: "Anyone who refuses to play will be eliminated." },
+    { title: "Rule 3", iconShape: "square", description: "The games may be terminated if the majority agrees." },
+    { title: "Rule 4", iconShape: "circle", description: "All participants are equal in the game, regardless of their background." },
+    { title: "Rule 5", iconShape: "triangle", description: "The winner takes all money earned from the prize pool." }
+];
+
+/* -------------------------------
+    DYNAMIC CONTENT RENDERING
+--------------------------------*/
+
+function renderGames() {
+    const container = document.getElementById('gamesContainer');
+    if (!container) return;
+
+    const htmlContent = GAMES_DATA.map(game => `
+        <div class="game-card relative p-8 rounded-lg group overflow-hidden">
+            <div class="${game.iconShape} bg-${game.iconColor} mb-4"></div>
+            <h3 class="text-2xl font-bold mb-4">${game.title}</h3>
+            <p class="text-gray-300">${game.description}</p>
+            <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 transform -translate-x-full group-hover:translate-x-0 transition"></div>
+        </div>
+    `).join('');
+
+    container.innerHTML = htmlContent;
+}
+
+function renderParticipants() {
+    const container = document.getElementById('participantsContainer');
+    if (!container) return;
+
+    const htmlContent = PARTICIPANT_DATA.map(player => {
+        const statusColor = player.state === 'Active' ? 'bg-red-700' : 'bg-gray-500';
+        return `
+            <div class="participant-card rounded-lg overflow-hidden transition duration-300 transform hover:scale-[1.03] hover:cursor-pointer bg-gray-800 border border-gray-700 hover:border-red-600">
+                <div class="h-64 overflow-hidden">
+                    <img src="${player.image}" alt="${player.name} in green tracksuit" class="w-full h-full object-cover" />
+                </div>
+                <div class="p-4">
+                    <h3 class="text-xl font-bold">${player.name}</h3>
+                    <p class="text-gray-400">${player.status}</p>
+                    <div class="flex justify-between mt-4">
+                        <span class="bg-black px-3 py-1 rounded-full text-sm">${player.location}</span>
+                        <span class="${statusColor} px-3 py-1 rounded-full text-sm">${player.state}</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    // Render the cards and the "View All" button container
+    container.innerHTML = htmlContent;
+
+    // You might also want to generate the "View All" button here if it was dynamic, 
+    // but for now, we'll assume the button container is in the HTML.
+}
+
+
+function renderRules() {
+    const container = document.getElementById('rulesContainer');
+    if (!container) return;
+
+    const htmlContent = RULES_DATA.map(rule => `
+        <div class="flex items-start">
+            <div class="${rule.iconShape} bg-red-600 mr-4 mt-1 flex-shrink-0"></div>
+            <div>
+                <h3 class="text-xl font-bold mb-2">${rule.title}</h3>
+                <p class="text-gray-300">${rule.description}</p>
+            </div>
+        </div>
+    `).join('');
+
+    container.innerHTML = htmlContent;
+}
+
 
 /* -------------------------------
     MOBILE MENU
@@ -46,7 +142,7 @@ function toggleMobileMenu(open) {
         sidebarOverlay.classList.remove('hidden');
         document.body.style.overflow = "hidden";
         
-        // NEW: Toggle icon to 'X'
+        // Toggle icon to 'X'
         hamburgerIcon.classList.add('opacity-0');
         closeIcon.classList.remove('opacity-0');
         
@@ -54,7 +150,7 @@ function toggleMobileMenu(open) {
         mobileSidebar.classList.add('translate-x-full');
         sidebarOverlay.classList.add('hidden');
         
-        // NEW: Toggle icon back to hamburger
+        // Toggle icon back to hamburger
         hamburgerIcon.classList.remove('opacity-0');
         closeIcon.classList.add('opacity-0');
         
@@ -207,8 +303,9 @@ function animatePrizeCounter(finalValue) {
 --------------------------------*/
 function initializeAnimations() {
     // Elements to animate on scroll (fade in and slide up)
+    // IMPORTANT: Include the new containers for animations
     const animatables = document.querySelectorAll(
-        'section:not(.hero) h2, section:not(.hero) p, section:not(.hero) h3, .game-card, .participant-card, section:not(.hero) button'
+        'section:not(.hero) h2, section:not(.hero) p, section:not(.hero) h3, .game-card, .participant-card, #rulesContainer > div, section:not(.hero) button'
     );
     
     // 1. Set initial hidden state for all animatable elements
@@ -249,7 +346,11 @@ function initializeAnimations() {
     });
 
     // 4. Start observing the elements
-    animatables.forEach(el => observer.observe(el));
+    // Re-select animatables after content injection to observe the new elements
+    document.querySelectorAll(
+        'section:not(.hero) h2, section:not(.hero) p, section:not(.hero) h3, .game-card, .participant-card, #rulesContainer > div, section:not(.hero) button, .participant-card button'
+    ).forEach(el => observer.observe(el));
+
     if (prizeMoneyElement) observer.observe(prizeMoneyElement);
 }
 
@@ -280,15 +381,11 @@ function handleSignupSubmit(e) {
 --------------------------------*/
 function initEvents() {
     // Mobile Menu Handlers
-    // The mobileMenuBtn now handles both open and close, and icon toggle is inside toggleMobileMenu
     mobileMenuBtn?.addEventListener("click", () => {
-        // Check if the sidebar is currently closed (has 'translate-x-full') to decide whether to open or close
         const isClosed = mobileSidebar?.classList.contains('translate-x-full');
         toggleMobileMenu(isClosed);
     });
 
-    // Removed the closeSidebarBtn listener as the close button is now in the nav
-    // closeSidebarBtn?.addEventListener("click", () => toggleMobileMenu(false)); 
     sidebarOverlay?.addEventListener("click", () => toggleMobileMenu(false));
     
     // Modal Handlers
@@ -301,6 +398,7 @@ function initEvents() {
     });
 
     // Smooth Scroll Handler
+    // Note: The navLinks variable is still valid as it queries links in the generated mobile sidebar
     navLinks.forEach(link => link.addEventListener("click", handleSmoothScroll));
 
     // Form Submit Handler
@@ -328,10 +426,20 @@ function initEvents() {
     MAIN EXECUTION
 --------------------------------*/
 document.addEventListener("DOMContentLoaded", () => {
+    // 1. Render dynamic content before initialization
+    renderGames();
+    renderParticipants();
+    renderRules();
+
     console.log("All Features Loaded Successfully - Player 456's Challenge Ready");
+    
+    // 2. Initialize Events
     initEvents();
+
+    // 3. Initialize Animations (needs to run after rendering new elements)
     initializeAnimations();
-    // Run header style and nav highlight immediately for the initial state
+    
+    // 4. Run header style and nav highlight immediately for the initial state
     handleHeaderStyle(); 
     handleNavHighlight(); 
 });
