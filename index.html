@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Squid Game - Akbar Qureshi</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </head>
-<body>
+</head>
+<body class="bg-black text-white antialiased">
+    
     <nav class="flex justify-between items-center p-6 fixed w-full z-50 bg-black bg-opacity-90">
         <div class="flex items-center">
             <span class="circle bg-red-600 mr-2"></span>
@@ -19,27 +20,30 @@
         <div class="hidden md:flex space-x-8">
             <a href="#" class="text-white hover:text-red-500 transition">HOME</a>
             <a href="#games" class="text-white hover:text-red-500 transition">GAMES</a>
-            <a href="#history" class="text-white hover:text-red-500 transition">HISTORY</a> <a href="#participants" class="text-white hover:text-red-500 transition">PARTICIPANTS</a>
+            <a href="#history" class="text-white hover:text-red-500 transition">HISTORY</a> 
+            <a href="#participants" class="text-white hover:text-red-500 transition">PARTICIPANTS</a>
             <a href="#rules" class="text-white hover:text-red-500 transition">RULES</a>
         </div>
-        <button id="mobileMenuBtn" class="md:hidden text-white">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        
+        <button id="mobileMenuBtn" class="md:hidden text-white relative h-8 w-8">
+            <svg id="hamburgerIcon" class="h-8 w-8 transition-opacity duration-300" 
+                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
+            <svg id="closeIcon" class="h-8 w-8 absolute top-0 left-0 transition-opacity duration-300 opacity-0" 
+                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
         </button>
-    </nav>
+        </nav>
 
-    <div id="mobileSidebar" class="fixed right-0 top-0 h-full w-full bg-black bg-opacity-95 z-40 transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div id="mobileSidebar" class="fixed right-0 top-0 h-full w-screen bg-black bg-opacity-95 z-40 transform translate-x-full transition-transform duration-300 ease-in-out">
         <div class="flex flex-col h-full p-6 pt-20">
-            <button id="closeSidebarBtn" class="absolute top-6 right-6 text-white hover:text-red-500 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-            </button>
             <div class="space-y-6 flex-1">
                 <a href="#" class="block text-white text-2xl font-bold hover:text-red-500 transition">HOME</a>
                 <a href="#games" class="block text-white text-2xl font-bold hover:text-red-500 transition">GAMES</a>
-                <a href="#history" class="block text-white text-2xl font-bold hover:text-red-500 transition">HISTORY</a> <a href="#participants" class="block text-white text-2xl font-bold hover:text-red-500 transition">PARTICIPANTS</a>
+                <a href="#history" class="block text-white text-2xl font-bold hover:text-red-500 transition">HISTORY</a> 
+                <a href="#participants" class="block text-white text-2xl font-bold hover:text-red-500 transition">PARTICIPANTS</a>
                 <a href="#rules" class="block text-white text-2xl font-bold hover:text-red-500 transition">RULES</a>
             </div>
             <button id="mobileSignUpBtn" class="bg-red-600 hover:bg-red-700 w-full py-3 rounded font-bold text-lg transition transform hover:scale-105">
@@ -47,284 +51,286 @@
             </button>
         </div>
     </div>
-
-    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
-
-    <section class="hero flex items-center justify-center text-center">
-        <div>
-            <h1 class="text-5xl md:text-8xl font-bold mb-6 glow-effect">SQUID GAME</h1>
-            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">456 players. 6 games. One winner will take it all.</p>
-            <button id="signUpBtn" class="bg-red-600 hover:bg-red-700 px-8 py-4 rounded font-bold text-lg transition transform hover:scale-105">
-                JOIN THE GAME
-            </button>
-            <p class="mt-4 text-sm opacity-75">Are you ready to take the challenge?</p>
-        </div>
-    </section>
-
-    <section id="games" class="py-20 px-4 max-w-7xl mx-auto">
-        <h2 class="text-4xl font-bold text-center mb-16 glow-effect">THE GAMES</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="game-card relative p-8 rounded-lg group overflow-hidden">
-                <div class="circle bg-pink-500 mb-4"></div>
-                <h3 class="text-2xl font-bold mb-4">RED LIGHT, GREEN LIGHT</h3>
-                <p class="text-gray-300">Run when you hear "green light" but freeze when you hear "red light".</p>
-                <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 transform -translate-x-full group-hover:translate-x-0 transition"></div>
-            </div>
-            
-            <div class="game-card relative p-8 rounded-lg group overflow-hidden">
-                <div class="square bg-blue-500 mb-4"></div>
-                <h3 class="text-2xl font-bold mb-4">HONEYCOMB</h3>
-                <p class="text-gray-300">Choose your shape carefully and try not to break the honeycomb.</p>
-                <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 transform -translate-x-full group-hover:translate-x-0 transition"></div>
-            </div>
-            
-            <div class="game-card relative p-8 rounded-lg group overflow-hidden">
-                <div class="triangle bg-green-500 mb-4"></div>
-                <h3 class="text-2xl font-bold mb-4">TUG OF WAR</h3>
-                <p class="text-gray-300">Team up and pull with all your might against your opponents.</p>
-                <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 transform -translate-x-full group-hover:translate-x-0 transition"></div>
-            </div>
-            
-            <div class="game-card relative p-8 rounded-lg group overflow-hidden">
-                <div class="square bg-purple-500 mb-4"></div>
-                <h3 class="text-2xl font-bold mb-4">MARBLES</h3>
-                <p class="text-gray-300">Win all your opponent's marbles to survive this psychological game.</p>
-                <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 transform -translate-x-full group-hover:translate-x-0 transition"></div>
-            </div>
-            
-            <div class="game-card relative p-8 rounded-lg group overflow-hidden">
-                <div class="circle bg-yellow-500 mb-4"></div>
-                <h3 class="text-2xl font-bold mb-4">GLASS BRIDGE</h3>
-                <p class="text-gray-300">Choose between tempered and normal glass while crossing.</p>
-                <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 transform -translate-x-full group-hover:translate-x-0 transition"></div>
-            </div>
-            
-            <div class="game-card relative p-8 rounded-lg group overflow-hidden">
-                <div class="triangle bg-red-500 mb-4"></div>
-                <h3 class="text-2xl font-bold mb-4">SQUID GAME</h3>
-                <p class="text-gray-300">The final game that gives the competition its name.</p>
-                <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 transform -translate-x-full group-hover:translate-x-0 transition"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="history" class="py-20 px-4 bg-gray-900 border-t border-red-600/30">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-10 glow-effect">A DEBT TO BE PAID</h2>
-            <p class="text-xl text-red-500 mb-8 max-w-2xl mx-auto italic">"We are playing a game, the host is allowing us to compete."</p>
-            <div class="space-y-6 text-gray-300 text-left">
-                <p>The Squid Game is a highly secretive, annual event created to provide entertainment for the ultra-wealthy. It recruits individuals from the edges of society—those deeply entrenched in debt and desperate for a final chance at financial freedom.</p>
-                
-                <p>Based on traditional Korean children's games, the competition strips away social class and status, reducing all participants to players in green tracksuits. While the games appear innocent, the consequences of failure are permanent, fueling an ever-increasing prize pool.</p>
-                
-                <p>For decades, the operation has been run in absolute secrecy on a remote island, overseen by the enigmatic **Front Man**. The history of the games is marked by desperation, betrayal, and a singular focus on the ultimate reward: **The Grand Prize.**</p>
-
-                <div class="border-l-4 border-red-600 pl-4 py-2 mt-8">
-                    <p class="font-semibold text-white">The choice is simple: risk your life for absolute freedom, or return to debt and despair.</p>
-                </div>
-            </div>
-        </div>
-    </section>
     
-    <section class="py-12 px-4 text-center bg-red-900 bg-opacity-30 border-b border-t border-red-600/50">
-        <h3 class="text-xl font-semibold mb-4 text-gray-200">CURRENT PRIZE POOL</h3>
-        <p id="prizeMoneyCounter" class="text-6xl font-extrabold text-white glow-effect"></p>
-        <p class="text-lg mt-2 text-gray-300">₩45,600,000,000 accumulated.</p>
-    </section>
-
-    <section id="participants" class="py-20 px-4 bg-black">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-16 glow-effect">PARTICIPANTS</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="participant-card rounded-lg overflow-hidden hover:cursor-pointer">
-                    <img src="./Images/player 456.webp" alt="Serious-looking male participant in green tracksuit with participant number 456 badge" />
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold">Player 456</h3>
-                        <p class="text-gray-400">Default Status</p>
-                        <div class="flex justify-between mt-4">
-                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Seoul</span>
-                            <span class="bg-red-900 px-3 py-1 rounded-full text-sm">Active</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="participant-card rounded-lg overflow-hidden hover:cursor-pointer">
-                    <img src="./Images/player 067.jpg" alt="Young female participant in green tracksuit with determined expression" />
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold">Player 067</h3>
-                        <p class="text-gray-400">Pickpocket</p>
-                        <div class="flex justify-between mt-4">
-                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Busan</span>
-                            <span class="bg-red-900 px-3 py-1 rounded-full text-sm">Active</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="participant-card rounded-lg overflow-hidden hover:cursor-pointer">
-                    <img src="./Images/player 001.webp" alt="Elderly male participant with wise expression in green tracksuit" />
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold">Player 001</h3>
-                        <p class="text-gray-400">Veteran</p>
-                        <div class="flex justify-between mt-4">
-                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Daegu</span>
-                            <span class="bg-gray-500 px-3 py-1 rounded-full text-sm">Eliminated</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="participant-card rounded-lg overflow-hidden hover:cursor-pointer">
-                    <img src="./Images/player 101.png" alt="Male participant in green tracksuit with strong build and aggressive posture" />
-                    <div class="p-4">
-                        <h3 class="text-xl font-bold">Player 101</h3>
-                        <p class="text-gray-400">Gangster</p>
-                        <div class="flex justify-between mt-4">
-                            <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Incheon</span>
-                            <span class="bg-gray-500 px-3 py-1 rounded-full text-sm">Eliminated</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <button class="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded font-bold transition">
-                    VIEW ALL 456 PARTICIPANTS
+    <div id="sidebarOverlay" class="fixed inset-0 bg-black bg-opacity-50 z-30 hidden"></div>
+    
+    <main class="overflow-hidden">
+        <section class="hero flex items-center justify-center text-center">
+            <div>
+                <h1 class="text-5xl md:text-8xl font-bold mb-6 glow-effect">SQUID GAME</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">456 players. 6 games. One winner will take it all.</p>
+                <button id="signUpBtn" class="bg-red-600 hover:bg-red-700 px-8 py-4 rounded font-bold text-lg transition transform hover:scale-105">
+                    JOIN THE GAME
                 </button>
+                <p class="mt-4 text-sm opacity-75">Are you ready to take the challenge?</p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="rules" class="py-20 px-4 bg-gray-900">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-16 glow-effect">RULES OF THE GAME</h2>
-            <div class="space-y-8">
-                <div class="flex items-start">
-                    <div class="circle bg-red-600 mr-4 mt-1 flex-shrink-0"></div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Rule 1</h3>
-                        <p class="text-gray-300">Participants must remain in the competition area until all games are completed.</p>
-                    </div>
+        <section id="games" class="py-20 px-4 max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16 glow-effect">THE GAMES</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="game-card relative p-8 rounded-lg group overflow-hidden">
+                    <div class="circle bg-pink-500 mb-4"></div>
+                    <h3 class="text-2xl font-bold mb-4">RED LIGHT, GREEN LIGHT</h3>
+                    <p class="text-gray-300">Run when you hear "green light" but freeze when you hear "red light".</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 transform -translate-x-full group-hover:translate-x-0 transition"></div>
                 </div>
                 
-                <div class="flex items-start">
-                    <div class="triangle bg-red-600 mr-4 mt-1 flex-shrink-0"></div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Rule 2</h3>
-                        <p class="text-gray-300">Anyone who refuses to play will be eliminated.</p>
-                    </div>
+                <div class="game-card relative p-8 rounded-lg group overflow-hidden">
+                    <div class="square bg-blue-500 mb-4"></div>
+                    <h3 class="text-2xl font-bold mb-4">HONEYCOMB</h3>
+                    <p class="text-gray-300">Choose your shape carefully and try not to break the honeycomb.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 transform -translate-x-full group-hover:translate-x-0 transition"></div>
                 </div>
                 
-                <div class="flex items-start">
-                    <div class="square bg-red-600 mr-4 mt-1 flex-shrink-0"></div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Rule 3</h3>
-                        <p class="text-gray-300">The games may be terminated if the majority agrees.</p>
-                    </div>
+                <div class="game-card relative p-8 rounded-lg group overflow-hidden">
+                    <div class="triangle bg-green-500 mb-4"></div>
+                    <h3 class="text-2xl font-bold mb-4">TUG OF WAR</h3>
+                    <p class="text-gray-300">Team up and pull with all your might against your opponents.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 transform -translate-x-full group-hover:translate-x-0 transition"></div>
                 </div>
                 
-                <div class="flex items-start">
-                    <div class="circle bg-red-600 mr-4 mt-1 flex-shrink-0"></div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Rule 4</h3>
-                        <p class="text-gray-300">All participants are equal in the game, regardless of their background.</p>
-                    </div>
+                <div class="game-card relative p-8 rounded-lg group overflow-hidden">
+                    <div class="square bg-purple-500 mb-4"></div>
+                    <h3 class="text-2xl font-bold mb-4">MARBLES</h3>
+                    <p class="text-gray-300">Win all your opponent's marbles to survive this psychological game.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 transform -translate-x-full group-hover:translate-x-0 transition"></div>
                 </div>
                 
-                <div class="flex items-start">
-                    <div class="triangle bg-red-600 mr-4 mt-1 flex-shrink-0"></div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2">Rule 5</h3>
-                        <p class="text-gray-300">The winner takes all money earned from the prize pool.</p>
+                <div class="game-card relative p-8 rounded-lg group overflow-hidden">
+                    <div class="circle bg-yellow-500 mb-4"></div>
+                    <h3 class="text-2xl font-bold mb-4">GLASS BRIDGE</h3>
+                    <p class="text-gray-300">Choose between tempered and normal glass while crossing.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 transform -translate-x-full group-hover:translate-x-0 transition"></div>
+                </div>
+                
+                <div class="game-card relative p-8 rounded-lg group overflow-hidden">
+                    <div class="triangle bg-red-500 mb-4"></div>
+                    <h3 class="text-2xl font-bold mb-4">SQUID GAME</h3>
+                    <p class="text-gray-300">The final game that gives the competition its name.</p>
+                    <div class="absolute bottom-0 left-0 w-full h-1 bg-red-500 transform -translate-x-full group-hover:translate-x-0 transition"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="history" class="py-20 px-4 bg-gray-900 border-t border-red-600/30">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-10 glow-effect">A DEBT TO BE PAID</h2>
+                <p class="text-xl text-red-500 mb-8 max-w-2xl mx-auto italic">"We are playing a game, the host is allowing us to compete."</p>
+                <div class="space-y-6 text-gray-300 text-left">
+                    <p>The Squid Game is a highly secretive, annual event created to provide entertainment for the ultra-wealthy. It recruits individuals from the edges of society—those deeply entrenched in debt and desperate for a final chance at financial freedom.</p>
+                    
+                    <p>Based on traditional Korean children's games, the competition strips away social class and status, reducing all participants to players in green tracksuits. While the games appear innocent, the consequences of failure are permanent, fueling an ever-increasing prize pool.</p>
+                    
+                    <p>For decades, the operation has been run in absolute secrecy on a remote island, overseen by the enigmatic **Front Man**. The history of the games is marked by desperation, betrayal, and a singular focus on the ultimate reward: **The Grand Prize.**</p>
+
+                    <div class="border-l-4 border-red-600 pl-4 py-2 mt-8">
+                        <p class="font-semibold text-white">The choice is simple: risk your life for absolute freedom, or return to debt and despair.</p>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+        
+        <section class="py-12 px-4 text-center bg-red-900 bg-opacity-30 border-b border-t border-red-600/50">
+            <h3 class="text-xl font-semibold mb-4 text-gray-200">CURRENT PRIZE POOL</h3>
+            <p id="prizeMoneyCounter" class="text-6xl font-extrabold text-white glow-effect"></p>
+            <p class="text-lg mt-2 text-gray-300">₩45,600,000,000 accumulated.</p>
+        </section>
 
-    <section id="join" class="py-20 px-4 bg-black text-center">
-        <h2 class="text-4xl font-bold mb-8 glow-effect">ARE YOU READY TO PLAY?</h2>
-         <p class="text-xl mb-8 max-w-2xl mx-auto">
-            <span class="text-red-500 font-extrabold text-2xl md:text-3xl">456</span> lives wagered. 
-            <span class="text-white font-normal">Only </span> 
-            <span class="text-red-500 font-extrabold text-2xl md:text-3xl">1</span> 
-            <span class="text-white font-normal">winner will claim the grand prize.</span>
-        </p>
-        <button id="finalSignUpBtn" class="bg-red-600 hover:bg-red-700 px-8 py-4 rounded font-bold text-lg transition transform hover:scale-105 pulse-animation">
-            SIGN UP NOW
-        </button>
-    </section>
-
-    <footer class="py-12 px-4 bg-gray-900">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="flex items-center mb-6 md:mb-0">
-                    <span class="circle bg-red-600 mr-2"></span>
-                    <span class="triangle bg-red-600 mr-2"></span>
-                    <span class="square bg-red-600"></span>
-                    <span class="text-white font-bold text-xl ml-3">SQUID GAME</span>
+        <section id="participants" class="py-20 px-4 bg-black">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-16 glow-effect">PARTICIPANTS</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="participant-card rounded-lg overflow-hidden hover:cursor-pointer">
+                        <img src="./Images/player 456.webp" alt="Serious-looking male participant in green tracksuit with participant number 456 badge" />
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold">Player 456</h3>
+                            <p class="text-gray-400">Default Status</p>
+                            <div class="flex justify-between mt-4">
+                                <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Seoul</span>
+                                <span class="bg-red-900 px-3 py-1 rounded-full text-sm">Active</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="participant-card rounded-lg overflow-hidden hover:cursor-pointer">
+                        <img src="./Images/player 067.jpg" alt="Young female participant in green tracksuit with determined expression" />
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold">Player 067</h3>
+                            <p class="text-gray-400">Pickpocket</p>
+                            <div class="flex justify-between mt-4">
+                                <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Busan</span>
+                                <span class="bg-red-900 px-3 py-1 rounded-full text-sm">Active</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="participant-card rounded-lg overflow-hidden hover:cursor-pointer">
+                        <img src="./Images/player 001.webp" alt="Elderly male participant with wise expression in green tracksuit" />
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold">Player 001</h3>
+                            <p class="text-gray-400">Veteran</p>
+                            <div class="flex justify-between mt-4">
+                                <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Daegu</span>
+                                <span class="bg-gray-500 px-3 py-1 rounded-full text-sm">Eliminated</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="participant-card rounded-lg overflow-hidden hover:cursor-pointer">
+                        <img src="./Images/player 101.png" alt="Male participant in green tracksuit with strong build and aggressive posture" />
+                        <div class="p-4">
+                            <h3 class="text-xl font-bold">Player 101</h3>
+                            <p class="text-gray-400">Gangster</p>
+                            <div class="flex justify-between mt-4">
+                                <span class="bg-gray-800 px-3 py-1 rounded-full text-sm">Incheon</span>
+                                <span class="bg-gray-500 px-3 py-1 rounded-full text-sm">Eliminated</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="flex space-x-6 mb-6 md:mb-0">
-                    <a href="#" class="text-gray-400 hover:text-white transition">Terms</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">Privacy</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">Contact</a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">FAQ</a>
+                <div class="text-center mt-12">
+                    <button class="bg-gray-800 hover:bg-gray-700 px-6 py-3 rounded font-bold transition">
+                        VIEW ALL 456 PARTICIPANTS
+                    </button>
                 </div>
-                
-                <div class="flex space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-twitter h-6 w-6 text-2xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-instagram h-6 w-6 text-2xl"></i>
-                    </a>
-                    <a href="#" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-facebook-f h-6 w-6 text-2xl"></i>
-                    </a>
-                </div>
-                </div>
-            
-            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
-               <p>Design & Development by Akbar Qureshi | © 2023 Squid Game. All rights reserved. This is a fictional website inspired by the Netflix show.</p>
             </div>
-        </div>
-    </footer>
+        </section>
 
-    <div id="signupModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden mx-4">
-        <div class="bg-gray-900 p-8 rounded-lg max-w-md w-full relative border border-red-600">
-            <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+        <section id="rules" class="py-20 px-4 bg-gray-900">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl font-bold text-center mb-16 glow-effect">RULES OF THE GAME</h2>
+                <div class="space-y-8">
+                    <div class="flex items-start">
+                        <div class="circle bg-red-600 mr-4 mt-1 flex-shrink-0"></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Rule 1</h3>
+                            <p class="text-gray-300">Participants must remain in the competition area until all games are completed.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="triangle bg-red-600 mr-4 mt-1 flex-shrink-0"></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Rule 2</h3>
+                            <p class="text-gray-300">Anyone who refuses to play will be eliminated.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="square bg-red-600 mr-4 mt-1 flex-shrink-0"></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Rule 3</h3>
+                            <p class="text-gray-300">The games may be terminated if the majority agrees.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="circle bg-red-600 mr-4 mt-1 flex-shrink-0"></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Rule 4</h3>
+                            <p class="text-gray-300">All participants are equal in the game, regardless of their background.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="triangle bg-red-600 mr-4 mt-1 flex-shrink-0"></div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Rule 5</h3>
+                            <p class="text-gray-300">The winner takes all money earned from the prize pool.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="join" class="py-20 px-4 bg-black text-center">
+            <h2 class="text-4xl font-bold mb-8 glow-effect">ARE YOU READY TO PLAY?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">
+                <span class="text-red-500 font-extrabold text-2xl md:text-3xl">456</span> lives wagered. 
+                <span class="text-white font-normal">Only </span> 
+                <span class="text-red-500 font-extrabold text-2xl md:text-3xl">1</span> 
+                <span class="text-white font-normal">winner will claim the grand prize.</span>
+            </p>
+            <button id="finalSignUpBtn" class="bg-red-600 hover:bg-red-700 px-8 py-4 rounded font-bold text-lg transition transform hover:scale-105 pulse-animation">
+                SIGN UP NOW
             </button>
-            
-            <h3 class="text-2xl font-bold mb-6 text-center glow-effect">JOIN THE GAME</h3>
-            <form class="space-y-4 ">
-                <div>
-                    <label class="block text-gray-300 mb-2">Full Name</label>
-                    <input type="text" class="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2 text-white">
-                </div>
+        </section>
+
+        <footer class="py-12 px-4 bg-gray-900">
+            <div class="max-w-7xl mx-auto">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="flex items-center mb-6 md:mb-0">
+                        <span class="circle bg-red-600 mr-2"></span>
+                        <span class="triangle bg-red-600 mr-2"></span>
+                        <span class="square bg-red-600"></span>
+                        <span class="text-white font-bold text-xl ml-3">SQUID GAME</span>
+                    </div>
+                    
+                    <div class="flex space-x-6 mb-6 md:mb-0">
+                        <a href="#" class="text-gray-400 hover:text-white transition">Terms</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">Privacy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">Contact</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">FAQ</a>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-twitter h-6 w-6 text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram h-6 w-6 text-2xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f h-6 w-6 text-2xl"></i>
+                        </a>
+                    </div>
+                    </div>
                 
-                <div>
-                    <label class="block text-gray-300 mb-2">Email</label>
-                    <input type="email" class="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2 text-white">
+                <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                    <p>Design & Development by Akbar Qureshi | © 2023 Squid Game. All rights reserved. This is a fictional website inspired by the Netflix show.</p>
                 </div>
-                
-                <div>
-                    <label class="block text-gray-300 mb-2">Phone Number</label>
-                    <input type="tel" class="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2 text-white">
-                </div>
-                
-                <div class="flex items-center">
-                    <input type="checkbox" id="agree" class="mr-2">
-                    <label for="agree" class="text-gray-300 text-sm">I agree to the terms and conditions</label>
-                </div>
-                
-                <button type="submit" class="w-full bg-red-600 hover:bg-red-700 py-3 rounded font-bold transition">
-                    SUBMIT APPLICATION
+            </div>
+        </footer>
+
+        <div id="signupModal" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden mx-4">
+            <div class="bg-gray-900 p-8 rounded-lg max-w-md w-full relative border border-red-600">
+                <button id="closeModal" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </button>
-            </form>
+                
+                <h3 class="text-2xl font-bold mb-6 text-center glow-effect">JOIN THE GAME</h3>
+                <form class="space-y-4 ">
+                    <div>
+                        <label class="block text-gray-300 mb-2">Full Name</label>
+                        <input type="text" class="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2 text-white">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-300 mb-2">Email</label>
+                        <input type="email" class="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2 text-white">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-gray-300 mb-2">Phone Number</label>
+                        <input type="tel" class="w-full bg-gray-800 border border-gray-700 rounded px-4 py-2 text-white">
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <input type="checkbox" id="agree" class="mr-2">
+                        <label for="agree" class="text-gray-300 text-sm">I agree to the terms and conditions</label>
+                    </div>
+                    
+                    <button type="submit" class="w-full bg-red-600 hover:bg-red-700 py-3 rounded font-bold transition">
+                        SUBMIT APPLICATION
+                    </button>
+                </form>
+            </div>
         </div>
-    </div>
+    </main>
 
     <script src="script.js"></script>
 </body>
